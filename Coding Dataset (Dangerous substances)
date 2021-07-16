@@ -1,0 +1,40 @@
+# Import package 
+import pandas as pd
+
+# Load the CSV data into DataFrames
+dataset = pd.read_csv(r'C:\Users\ASUS\Documents\UTeM\SEM 4\DS\Project\global causes new.csv')
+df = pd.DataFrame(dataset)
+
+# Display descriptive Statistics
+display(df.head())
+
+# Check for null values
+df.info()
+print('\n')
+
+# Display the original dataset
+print(df)
+
+# Remove unwanted columns
+df.drop('Total employment', inplace = True, axis = 1)
+df.drop('Gross national income GNI USD mil 2003', inplace = True, axis = 1)
+df.drop('Fatal accidents reported to the ILO (2003)', inplace = True, axis = 1)
+df.drop('Accident causing at least 3 days absence reported to the ILO (2003)', inplace = True, axis = 1)
+df.drop('Fatal accident 2003', inplace = True, axis = 1)
+df.drop('Accident causing at least 4 days absence Average 2003', inplace = True, axis = 1)
+
+# Display after cleaning 
+display(df.head())
+
+# Display columns and row after cleaning unwanted columns
+df.shape
+
+# Remove unwanted country
+df.drop([0,2,3,4,5,6,7,8,9,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,31,32], axis=0, inplace=True)
+df.head()
+
+# Display columns and row after cleaning unwanted row (country)
+df.shape
+
+# Save new data to CSV file
+df.to_csv(r'C:\Users\ASUS\Documents\UTeM\SEM 4\DS\Project\Dataset\Dangerous_substances.csv', index = False)
