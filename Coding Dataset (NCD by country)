@@ -1,0 +1,57 @@
+import pandas as pd
+from pandas import Series
+import seaborn as sns
+import pylab
+import numpy as npp
+import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+
+df = pd.read_csv('E:/#Utem/Sem6/IDS/Project/Data/NCD_UNDER70.csv')
+new_header = df.iloc[0] 
+df = df[1:] 
+df.columns = new_header 
+
+print(new_header)
+print(df.shape)
+df.head(3660)
+
+import pandas as pd
+from pandas import Series
+import seaborn as sns
+import pylab
+import numpy as npp
+import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+
+df = pd.read_csv('E:/#Utem/Sem6/IDS/Project/Data/NCD_UNDER70.csv')
+new_header = df.iloc[0] 
+df = df[1:] 
+df.columns = new_header 
+
+print(new_header)
+print(df.shape)
+df.head(3660)
+
+#Remove unwanted columns
+df= df.drop(columns=[' Male',' Female'])
+print(df)
+
+options = ["Malaysia","Singapore","Indonesia","Thailand","Viet Nam","Philippines","Myanmar","Cambodia","Brunei Darussalam"] 
+    # selecting rows based on condition 
+df = df[df['Country'].isin(options)]
+
+print(df)
+
+#df['Year'] = df['Year'].astype(int)
+#df = df[(df['Year'] > 2014)]
+
+df['bsVal'] = df[' Both sexes'].astype(str).str[:4]
+df['bsVal'] = df['bsVal'].astype(float)
+print(df)
+
+df = df.pivot(index='Year', columns='Country', values='bsVal')
+
+df.plot()
+
+df.to_csv(r'E:/#Utem/Sem6/IDS/Project/Data/PrematureData.csv')
+
