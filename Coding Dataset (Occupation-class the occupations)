@@ -1,0 +1,11 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('Working.csv')
+df["sex"] = df["sex"].astype('category')
+df["sex"] = df["sex"].cat.codes
+df["age_group"] = df["age_group"].astype('category')
+df["age_group"] = df["age_group"].cat.codes
+new = df[df.occupation != 'Not Working']
+print(new)
+new.to_csv(r'D:\BITI2513 INTRODUCTION TO DATA SCIENCE\CAPSTONE PROJECT\Latest_Working_Dataset_2.csv')
