@@ -1,0 +1,24 @@
+# Import package 
+import pandas as pd
+
+# Load the CSV data into DataFrames
+dataset = pd.read_csv(r'C:\Users\ASUS\Documents\UTeM\SEM 4\DS\Project\NCD_Diseases_8.csv')
+
+# Display data
+df = pd.DataFrame(dataset)
+df
+
+# Categorize causes
+df['Causes new'] = pd.factorize(df.Causes)[0]
+
+# Display data
+Df
+
+# Drop unwanted column 
+df.drop('Causes', inplace = True, axis = 1)
+
+# Display data after drop unwanted column
+Df
+
+# Save data to CSV file
+df.to_csv(r'C:\Users\ASUS\Documents\UTeM\SEM 4\DS\Project\Dataset\Dataset 1 [cleaned].csv', index = False)
